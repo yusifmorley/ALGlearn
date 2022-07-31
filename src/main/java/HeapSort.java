@@ -13,7 +13,6 @@ public class HeapSort {
             System.out.println(i);
         }
 
-
     }
 
     public  static  void HeapSort(int[] arr){
@@ -31,7 +30,6 @@ public class HeapSort {
         }
 
 
-
     }
     static class Heap<E extends Comparable<E>>{
         private  LinkedList<E> list=new LinkedList<>();
@@ -43,12 +41,16 @@ public class HeapSort {
         }
 
         public void add(E newObject){
+            //最后一个节点为 当前节点
+            //向上重构堆
+
+
             list.add(newObject);
-            int currentIndex=list.size()-1;
+            int currentIndex=list.size()-1;//最后一个索引
             while (currentIndex>0){
                 int parentIndex=(currentIndex-1)/2;
-                if (list.get(currentIndex).compareTo(list.get(parentIndex))>0){
-                    E temp=list.get(currentIndex);
+                if (list.get(currentIndex).compareTo(list.get(parentIndex))>0){//与父节点比较
+                    E temp=list.get(currentIndex);                
                     list.set(currentIndex,list.get(parentIndex));
                     list.set(parentIndex,temp);
                 }
@@ -57,23 +59,31 @@ public class HeapSort {
                 }
                 currentIndex=parentIndex;
             }
-
         }
 
         public E remove() {
+            //1.最后一个节点覆盖根节点
+            //2.当前节点为根节点
+            //3.从当前节点 重构整个堆
+
+
             if (list.size() == 0) return null;
-            E removedObject = list.get(0);
-            list.set(0, list.get(list.size() - 1));
+            E removedObject = list.get(0); //取出第一个（根节点）
+            list.set(0, list.get(list.size() - 1));//把最后一个节点 放在索引为0 位置
 
             int currentIndex = 0;
             while (currentIndex < list.size()) {
+
               int leftChildIndex=2*currentIndex+1;
               int rightChildIndex=2*currentIndex+2;
+
               if (leftChildIndex>=list.size())
-                  break;
-              int maxIndex=leftChildIndex;
-              if (rightChildIndex<list.size()){
-                  if (list.get(maxIndex).compareTo(list.get(rightChildIndex))<0){
+                  break;         // 不可超越数组大小 (叶子节点则跳出循环)
+
+              int maxIndex=leftChildIndex; //默认假设左节点为最大
+
+              if (rightChildIndex<list.size()){  // 若右节点合理存在
+                  if (list.get(maxIndex).compareTo(list.get(rightChildIndex))<0){  //左右子节点比较
                       maxIndex=rightChildIndex;
                   }
               }
