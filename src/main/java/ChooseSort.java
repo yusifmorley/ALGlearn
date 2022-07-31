@@ -1,6 +1,7 @@
 
 //选择排序
 //（选择最大或最小元素放到最前或最后）
+//本次 是将最小数放在最前面
 public class ChooseSort { //从小到大
     public static void main(String[] args) {
         int[] arr={10,92,31,45,51,17,19};
