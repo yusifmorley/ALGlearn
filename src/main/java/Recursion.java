@@ -1,5 +1,5 @@
 //递归算法 算斐波那契额数列
-public class Useme {
+public class Recursion {
 
     public static void main(String[] args) {
         System.out.println(f(40));
