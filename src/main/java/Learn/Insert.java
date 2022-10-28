@@ -9,20 +9,25 @@ package Learn;
 public class Insert {
     public static void main(String[] args) {
     int [] arr ={2,3,6,5,4,8,5,4,5,3,1};
-    int current;
-        for (int i = 1; i <arr.length ; i++) {//从1 开始 因为默认第一个是有序的
-            current=arr[i]; //保存arr[i]值  为等待 插入的元素
-                            // arr[i] 位置可以腾出来 供有序序列 向右移动
-            for (int j = i-1; j >=0 ; j--) {
-                  //j 为有序序列最后一个
-                  if (arr[j]>current){  //与current比较
-                      arr[j+1]=arr[j];   //元素后移
-                  }//current
-                   else {
-                   arr[j]=current;
-                  }
+        for (int i = 1; i < arr.length; i++) {
+
+            // 记录要插入的数据
+            int tmp = arr[i];
+
+            // 从已经排序的序列最右边的开始比较，找到比其小的数
+            int j = i;
+            while (j > 0 && tmp < arr[j - 1]) {
+                arr[j] = arr[j - 1];
+                j--;
             }
+
+            // 存在比其小的数，插入
+            if (j != i) {
+                arr[j] = tmp;
+            }
+
         }
+
         for (int i:arr
              ) {
             System.out.print(i+" ");
