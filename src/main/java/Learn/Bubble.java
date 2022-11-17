@@ -15,8 +15,8 @@ public class Bubble {
         int temp;
         //每次循环 把最大的元素放在最后
         int [] arr={9,8,5,4,7,9,3,1,7,2};
-        for(int i =arr.length-1;i>0;i--){
-            for (int j=0;j<i;j++){
+        for(int i =0;i,<arr.lenth-1;;i++){
+            for (int j=0;j<arr.lenth-1-i;j++){
                 if(arr[j]>arr[j+1]){
                     temp=arr[j];
                     arr[j]=arr[j+1];
